@@ -1,32 +1,98 @@
-using System;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using SoftwareCatalogBackend.Models; 
 
-namespace Software-Catalog-Backend.Controllers
+namespace SoftwareCatalogBackend.Controllers
 {
-    [Route("[controller]")]
-    public class ReviewsController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ReviewsController : ControllerBase
     {
-        private readonly ILogger<ReviewsController> _logger;
+        private readonly SoftwareCatalogDbContext _context;
 
-        public ReviewsController(ILogger<ReviewsController> logger)
+        public ReviewsController(SoftwareCatalogDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Reviews>>> GetReviews()
         {
-            return View();
+            return await _context.Reviews.ToListAsync();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Reviews>> GetReviews(int id)
         {
-            return View("Error!");
+            var Reviews = await _context.Reviews.FindAsync(id);
+
+            if (Reviews == null)
+            {
+                return NotFound();
+            }
+
+            return Reviews;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Reviews>> PostReviews(Reviews Reviews)
+        {
+            _context.Reviews.Add(Reviews);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetReviews), new { id = Reviews.Id }, Reviews);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutReviews(int id, Reviews Reviews)
+        {
+            if (id != Reviews.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(Reviews).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ReviewsExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteReviews(int id)
+        {
+            var Reviews = await _context.Reviews.FindAsync(id);
+            if (Reviews == null)
+            {
+                return NotFound();
+            }
+
+            _context.Reviews.Remove(Reviews);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool ReviewsExists(int id)
+        {
+            return _context.Reviews.Any(e => e.Id == id);
         }
     }
 }
