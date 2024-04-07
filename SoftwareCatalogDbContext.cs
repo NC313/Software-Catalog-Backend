@@ -1,4 +1,4 @@
-using ResumeProjects.SoftwareCatalogBackend.Models;
+using SoftwareCatalogBackend.Models;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -10,6 +10,10 @@ namespace SoftwareCatalogBackend
         {
         }
 
-        public DbSet<Software>? Softwares { get; set; }
+         public DbSet<Reviews> Reviews { get; set; }
+        public DbSet<Comments> Comments { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<Software> Software { get; set; }
+        public DbSet<Pricing> Pricing { get; set; }
     }
 }

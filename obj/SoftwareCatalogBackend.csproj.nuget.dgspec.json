@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/nc3_goodluck/Desktop/ResumeProjects/SoftwareCatalogBackend/SoftwareCatalogBackend.csproj": {}
+    "/Users/nc3_goodluck/Desktop/GitHub/Software-Catalog-Backend/SoftwareCatalogBackend.csproj": {}
   },
   "projects": {
-    "/Users/nc3_goodluck/Desktop/ResumeProjects/SoftwareCatalogBackend/SoftwareCatalogBackend.csproj": {
+    "/Users/nc3_goodluck/Desktop/GitHub/Software-Catalog-Backend/SoftwareCatalogBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nc3_goodluck/Desktop/ResumeProjects/SoftwareCatalogBackend/SoftwareCatalogBackend.csproj",
+        "projectUniqueName": "/Users/nc3_goodluck/Desktop/GitHub/Software-Catalog-Backend/SoftwareCatalogBackend.csproj",
         "projectName": "SoftwareCatalogBackend",
-        "projectPath": "/Users/nc3_goodluck/Desktop/ResumeProjects/SoftwareCatalogBackend/SoftwareCatalogBackend.csproj",
+        "projectPath": "/Users/nc3_goodluck/Desktop/GitHub/Software-Catalog-Backend/SoftwareCatalogBackend.csproj",
         "packagesPath": "/Users/nc3_goodluck/.nuget/packages/",
-        "outputPath": "/Users/nc3_goodluck/Desktop/ResumeProjects/SoftwareCatalogBackend/obj/",
+        "outputPath": "/Users/nc3_goodluck/Desktop/GitHub/Software-Catalog-Backend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/nc3_goodluck/.nuget/NuGet/NuGet.Config"
@@ -38,7 +38,19 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Hosting": {
+              "target": "Package",
+              "version": "[2.2.7, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Cosmos": {
               "target": "Package",
               "version": "[8.0.3, )"
             },
@@ -48,7 +60,25 @@
               "target": "Package",
               "version": "[8.0.3, )"
             },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer.Design": {
+              "target": "Package",
+              "version": "[1.1.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.3, )"
             },
