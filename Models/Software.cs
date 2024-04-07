@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SoftwareCatalogBackend.Models
+namespace ResumeProjects.SoftwareCatalogBackend.Models
 {
     public class Software
     {
-         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Reviews { get; set; }
-        public string Pricing { get; set; }
+        public int Id { get; set; }
+    public string Name { get; set; } = "";
+    public string Description { get; set; } = "";
+    public string Reviews { get; set; } = "";
+    public string Pricing { get; set; } = "";
     }
 }
